@@ -1,12 +1,12 @@
 # Lập Trình Hướng Đối Tượng - Kỳ 20241
 
-## Giảng viên: Cô Nguyễn Thị Thu Trang
-
-## Trường Công Nghệ Thông Tin và Truyền Thông - Đại Học Bách Khoa Hà Nội
+* **Thông tin môn học:**
+   * Giảng viên: Cô Nguyễn Thị Thu Trang
+   * Trường Công Nghệ Thông Tin và Truyền Thông - Đại Học Bách Khoa Hà Nội
 
 ## Thông tin nhóm
 
-* **Nhóm:** 29
+* **Nhóm số:** 29
 * **Thành viên:**
     * 20226097 Phạm Thường Vi
     * 20225683 Đinh Đình Hải Việt
