@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<TitledPane alignment="CENTER" animated="false" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Create Array " textAlignment="CENTER" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateArrayUIStage1.ChooseOptionController">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+         <children>
+            <SplitPane dividerPositions="0.5532015065913372" layoutX="13.0" orientation="VERTICAL" prefHeight="362.4" prefWidth="598.4" AnchorPane.bottomAnchor="25.600000000000023" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="12.599999999999909" AnchorPane.topAnchor="0.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="219.0" prefWidth="731.0" style="-fx-background-color: white; -fx-border-color: white;">
+                     <children>
+                        <SplitPane dividerPositions="0.32079646017699104" layoutX="2.0" layoutY="2.0" prefHeight="164.0" prefWidth="571.2" AnchorPane.bottomAnchor="2.80000000000004" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.799999999999841" AnchorPane.topAnchor="2.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <ImageView fitHeight="155.0" fitWidth="167.0" layoutX="1.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.5999999999999943">
+                                       <image>
+                                          <Image url="@../../image/Screenshot%202024-12-06%20201955.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <ListView fx:id="instructionList" layoutY="39.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0" />
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" prefHeight="34.0" prefWidth="209.0" text="INSTRUCTION " textAlignment="CENTER" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="131.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="169.0" prefWidth="571.0" style="-fx-background-color: white; -fx-border-color: white;">
+                     <children>
+                        <Label layoutX="189.0" layoutY="14.0" text="Please choose one option">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="optionEnter" layoutX="161.0" layoutY="46.0" mnemonicParsing="false" onAction="#handleEnterEachElement" prefHeight="27.0" prefWidth="224.0" text="Enter each element for your array">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="optionCreate" layoutX="161.0" layoutY="90.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="223.0" text="Create your array automatically">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children></AnchorPane>
+  </content>
+   <font>
+      <Font name="System Bold" size="16.0" />
+   </font>
+</TitledPane>
