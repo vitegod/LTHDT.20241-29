@@ -6,6 +6,8 @@ import java.net.URL;
 import javafx.collections.*;
 import java.util.*;
 import javafx.stage.Stage;
+import sorting.controllers.BubbleSortController;
+import sorting.controllers.QuickSortController;
 import javafx.scene.*;
 import java.io.IOException;
 
@@ -67,6 +69,7 @@ public class EnterEachElementController implements Initializable, Setupable {
 		pivotPosition.setPromptText("Click here");
 	}
 	
+	
 	@Override
 	public void setupMyArray() {
 		String input = array.getText().trim();
@@ -96,6 +99,7 @@ public class EnterEachElementController implements Initializable, Setupable {
 	        }
 
 	        myArray.setArray(list);
+	        
 	    } else {
 	        // Show error if the number of elements doesn't match
 	        Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -106,6 +110,58 @@ public class EnterEachElementController implements Initializable, Setupable {
 	    }
 	}
 	
+	@FXML
+	public void handleFinishButton() {
+	    setupMyArray();
+
+	    if (myArray.getArray().isEmpty()) {
+	        Alert alert = new Alert(Alert.AlertType.WARNING);
+	        alert.setTitle("Empty Array");
+	        alert.setHeaderText("No elements in the array");
+	        alert.setContentText("Please enter the elements of the array before proceeding.");
+	        alert.showAndWait();
+	        return;
+	    }
+
+	    try {
+	        FXMLLoader loader = getAlgorithmLoader(selectedAlgorithm);
+	        if (loader == null) {
+	            throw new IllegalArgumentException("Unsupported algorithm: " + selectedAlgorithm);
+	        }
+
+	        Parent sortRoot = loader.load();
+	        int[] arrayToSort = myArray.getArray().stream().mapToInt(Double::intValue).toArray();
+	        Object controller = loader.getController();
+
+	        if (controller instanceof QuickSortController) {
+	            ((QuickSortController) controller).initializeWithArray(arrayToSort);
+	        } else if (controller instanceof BubbleSortController) {
+	            ((BubbleSortController) controller).initializeWithArray(arrayToSort);
+	        }
+
+	        Scene sortScene = new Scene(sortRoot);
+	        Stage stage = (Stage) finishButton.getScene().getWindow();
+	        stage.setScene(sortScene);
+
+	    } catch (IOException | IllegalArgumentException e) {
+	        e.printStackTrace();
+	    }
+	}
+
+	
+	private FXMLLoader getAlgorithmLoader(String algorithm) {
+	    switch (algorithm) {
+	        case "Quick sort":
+	            return new FXMLLoader(getClass().getResource("/sorting/views/QuickSortView.fxml"));
+	        case "Bubble sort":
+	            return new FXMLLoader(getClass().getResource("/sorting/views/BubbleSortView.fxml"));
+	        default:
+	            return null;
+	    }
+	}
+
+	
+	@FXML
 	public void handleReturnButton() {
 	    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 	    alert.setTitle("Confirm");
@@ -125,5 +181,4 @@ public class EnterEachElementController implements Initializable, Setupable {
 	        }
 	    }
 	}
-
 }

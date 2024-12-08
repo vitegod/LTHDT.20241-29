@@ -59,7 +59,7 @@
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Label>
-                  <Button fx:id="finishButton" layoutX="237.0" layoutY="181.0" mnemonicParsing="false" onAction="#setupMyArray" prefHeight="26.0" prefWidth="66.0" text="FINISH" AnchorPane.leftAnchor="230.0">
+                  <Button fx:id="finishButton" layoutX="237.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleFinishButton" prefHeight="26.0" prefWidth="66.0" text="FINISH" AnchorPane.leftAnchor="230.0">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>

@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.scene.*;
 import javafx.stage.Stage;
+import sorting.controllers.BubbleSortController;
 
 public class MainMenuController implements Initializable {
     @FXML
@@ -101,6 +102,37 @@ public class MainMenuController implements Initializable {
             }
         }
     }
+    
+   
+    
+    @FXML
+    public void handleQuickSort() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sorting/views/QuickSortView.fxml"));
+            Parent newRoot = loader.load();
+            Scene currentScene = chooseBox.getScene();
+            currentScene.setRoot(newRoot);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
+    public void handleBubbleSort() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sorting/views/BubbleSortView.fxml"));
+            Parent newRoot = loader.load();
+            Scene currentScene = chooseBox.getScene();
+            currentScene.setRoot(newRoot);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 
     
     @Override 
