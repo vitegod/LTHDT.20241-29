@@ -7,7 +7,6 @@ import javafx.collections.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.scene.*;
 import javafx.stage.Stage;
 
@@ -19,12 +18,15 @@ public class MainMenuController implements Initializable {
     private Button quitButton;
     
     @FXML
+    private Button startButton;
+    
+    @FXML
     private Label showMessage;
     
     private String selectedAlgorithm;
     
     @FXML
-    public void showUserOption(ActionEvent e) {
+    public void showUserOption() {
     	String s = chooseBox.getSelectionModel().getSelectedItem().toLowerCase();
     	showMessage.setText("Click \"Start\" to execute " + s + " algorithm!");
     }
@@ -105,7 +107,7 @@ public class MainMenuController implements Initializable {
     
     @Override 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    	ObservableList<String> list = FXCollections.observableArrayList("Quick sort", "Insertion Sort", "Bubble sort");
+    	ObservableList<String> list = FXCollections.observableArrayList("Quick sort", "Insertion sort", "Bubble sort");
     	chooseBox.setItems(list);
     }
 }
