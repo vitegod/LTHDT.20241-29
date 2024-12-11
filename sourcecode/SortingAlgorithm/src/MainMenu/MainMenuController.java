@@ -54,7 +54,8 @@ public class MainMenuController implements Initializable {
     	TextArea textArea = new TextArea(content);
     	textArea.setEditable(false);
     	textArea.setWrapText(true);
-    	textArea.setPrefSize(600, 200);
+    	ScrollPane scrollPane = new ScrollPane(textArea);
+        scrollPane.setPrefSize(600, 200);
     	alert.getDialogPane().setContent(textArea);
     	alert.showAndWait();
     }
