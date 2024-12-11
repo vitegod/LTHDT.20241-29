@@ -43,7 +43,7 @@ public class ChooseOptionController implements Initializable {
     @FXML
     public void handleEnterEachElement() {
     	try {
-            // Download the EnterEachElementView
+            // Download the EnterEachElement view
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/CreateArrayUIStage2/EnterEachElementView.fxml"));
             loader.setControllerFactory(param -> new EnterEachElementController(this.selectedAlgorithm));
             
@@ -65,6 +65,25 @@ public class ChooseOptionController implements Initializable {
     
     @FXML
     public void handleCreateArrayAutomatically() {
+    	try {
+            // Download the CreateAutomatically view
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CreateArrayUIStage2/CreateAutomaticallyView.fxml"));
+            loader.setControllerFactory(param -> new CreateAutomaticallyController(this.selectedAlgorithm));
+            
+            Parent root = loader.load();
+            
+            // Build a new scene
+            Scene createArrayScene = new Scene(root);
+            
+            // Get the current stage
+            Stage stage = (Stage) optionCreate.getScene().getWindow(); // Use chooseBox to get the stage
+            
+            // Move to the new scene
+            stage.setScene(createArrayScene);
+            
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
     }
     
 }

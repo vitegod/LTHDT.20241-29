@@ -1,11 +1,9 @@
 package CreateArrayUIStage2;
 
-import java.util.ArrayList;
-
 public class ArrayModel {
 	private int nbElements;
-	private int pivotPosition;
-	private ArrayList<Double> array = new ArrayList<Double>();
+	private String pivotPosition;
+	private double[] array;
 	
 	public int getNbElements() {
 		return nbElements;
@@ -15,20 +13,20 @@ public class ArrayModel {
 		this.nbElements = nbElements;
 	}
 	
-	public int getPivotPosition() {
+	public String getPivotPosition() {
 		return pivotPosition;
 	}
 	
-	public void setPivotPosition(int pivotPosition) {
+	public void setPivotPosition(String pivotPosition) {
 		this.pivotPosition = pivotPosition;
 	}
 	
-	public ArrayList<Double> getArray() {
+	public double[] getArray() {
 		return array;
 	}
 	
-	public void setArray(ArrayList<Double> array) {
+	public void setArray(double[] array) {
+		this.array = new double[this.getNbElements()];
 		this.array = array;
 	}
-	
 }

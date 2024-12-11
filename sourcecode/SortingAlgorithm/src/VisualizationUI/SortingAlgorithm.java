@@ -47,7 +47,9 @@ public abstract class SortingAlgorithm implements Initializable {
         this.steps = new ArrayList<>();
     }
 
-    @Override
+   
+
+	@Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         hBox.setSpacing(10);
         hBox.setAlignment(Pos.CENTER);
