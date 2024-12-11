@@ -13,7 +13,8 @@ public class Main extends Application {
         try {
         	Parent root = FXMLLoader.load(getClass().getResource("/MainMenu/MainMenuView.fxml"));
         	primaryStage.setTitle("Sorting Visualizer");
-            primaryStage.setScene(new Scene(root));
+        	Scene scene = new Scene(root, 1080, 720);
+            primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.show();
         } catch(Exception e) {
