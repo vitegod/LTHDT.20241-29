@@ -30,7 +30,8 @@ public class SortElement {
     }
 
     public double getValue() {
-        return Double.parseDouble(valueText.getText());
+        String normalizedValue = valueText.getText().replace(",", "."); 
+        return Double.parseDouble(normalizedValue);
     }
 
     public void updateValue(double value) {

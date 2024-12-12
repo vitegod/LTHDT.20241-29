@@ -40,6 +40,7 @@ public abstract class SortingAlgorithm implements Initializable {
         this.selectedAlgorithm = option;
         this.myArray = array;
         this.steps = new ArrayList<>();
+        perform();
     }
 
     public SortingAlgorithm(ArrayModel array) {
@@ -67,6 +68,7 @@ public abstract class SortingAlgorithm implements Initializable {
             hBox.getChildren().add(stackPane);
             i++;
         }
+        perform();
 
         updateStepLabel();
     }

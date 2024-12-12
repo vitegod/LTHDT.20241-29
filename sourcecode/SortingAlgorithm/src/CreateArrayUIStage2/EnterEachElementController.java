@@ -83,6 +83,7 @@ public class EnterEachElementController extends CreateArrayController implements
 	        myArray.setArray(list);
 	        
 	        open();
+	    
 	    } 
 	    else {
 	        // Show error if the number of elements doesn't match

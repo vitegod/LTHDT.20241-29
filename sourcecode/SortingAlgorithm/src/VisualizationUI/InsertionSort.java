@@ -34,6 +34,10 @@ public class InsertionSort extends SortingAlgorithm {
         }
 
         addStep(Arrays.copyOf(array, array.length)); 
+        System.out.println("Steps recorded: " + steps.size()); // Kiểm tra số bước đã ghi
+        for (double[] step : steps) {
+            System.out.println(Arrays.toString(step)); // In ra từng bước
+        }
     }
 
 
@@ -42,7 +46,7 @@ public class InsertionSort extends SortingAlgorithm {
         super.displayStep(stepIndex);
 
         double[] stepState = steps.get(stepIndex);
-
+        System.out.println("Displaying step " + stepIndex + ": " + Arrays.toString(stepState));
         for (int i = 0; i < elements.length; i++) {
             elements[i].updateValue(stepState[i]);
 
