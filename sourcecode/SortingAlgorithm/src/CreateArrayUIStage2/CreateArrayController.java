@@ -51,6 +51,8 @@ public abstract class CreateArrayController {
                 return new InsertionSort(array);
             case "Bubble sort":
             	return new BubbleSort(array);
+            case "Quick sort":
+                return new QuickSort(array);
             default:
                 throw new IllegalArgumentException("Unknown algorithm: " + selectedAlgorithm);
         }
