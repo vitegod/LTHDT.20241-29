@@ -1,55 +1,66 @@
 package VisualizationUI;
 
 import CreateArrayUIStage2.*;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.paint.Color;
-import java.util.Arrays;
+import javafx.util.Duration;
 
 public class BubbleSort extends SortingAlgorithm {
+	public BubbleSort(ArrayModel array) {
+		super(array);
+	}
+	
+	@Override
+	public void perform() {
+	    Timeline timeline = new Timeline();
+	    timeline.setCycleCount(Timeline.INDEFINITE); // Lặp cho đến khi hoàn thành
 
-    public BubbleSort(ArrayModel array) {
-    	super(array);
-    }
+	    // Biến trạng thái
+	    int[] i = {0}; // Vòng lặp ngoài
+	    int[] j = {0}; // Vòng lặp trong
+	    boolean[] comparing = {false}; // Trạng thái có đang so sánh hay không
 
-    @Override
-    public void perform() {
-        double[] array = Arrays.stream(elements).mapToDouble(SortElement::getValue).toArray();
-        int n = array.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                addStep(Arrays.copyOf(array, array.length));
+	    KeyFrame keyFrame = new KeyFrame(Duration.millis(1000), event -> {
+	        if (i[0] < myArray.getNbElements() - 1) {
+	            if (!comparing[0]) {
+	                // Đánh dấu hai phần tử được so sánh
+	                elements[j[0]].getRectangle().setFill(Color.YELLOW);
+	                elements[j[0] + 1].getRectangle().setFill(Color.YELLOW);
+	                comparing[0] = true; // Đặt trạng thái đang so sánh
+	            } else {
+	                // Thực hiện so sánh và hoán đổi nếu cần
+	                if (elements[j[0]].getValue() > elements[j[0] + 1].getValue()) {
+	                    double temp = elements[j[0]].getValue();
+	                    elements[j[0]].setValueText(elements[j[0] + 1].getValue());
+	                    elements[j[0] + 1].setValueText(temp);
+	                }
 
-                if (array[j] > array[j + 1]) {
-                    double temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
-                    addStep(Arrays.copyOf(array, array.length));
-                }
-            }
-        }
+	                // Khôi phục màu sắc sau khi so sánh
+	                elements[j[0]].getRectangle().setFill(Color.LIGHTGRAY);
+	                elements[j[0] + 1].getRectangle().setFill(Color.LIGHTGRAY);
+	                comparing[0] = false; // Đặt trạng thái kết thúc so sánh
 
-        addStep(Arrays.copyOf(array, array.length));
-    }
+	                // Chuyển sang cặp phần tử tiếp theo
+	                j[0]++;
+	                if (j[0] >= myArray.getNbElements() - 1 - i[0]) {
+	                    // Khi hoàn thành một vòng lặp trong
+	                    elements[myArray.getNbElements() - 1 - i[0]].getRectangle().setFill(Color.LIGHTGREEN);
+	                    j[0] = 0;
+	                    i[0]++;
+	                }
+	            }
+	        } else {
+	            // Toàn bộ mảng đã được sắp xếp
+	            for (SortElement element : elements) {
+	                element.getRectangle().setFill(Color.LIGHTGREEN);
+	            }
+	            timeline.stop();
+	        }
+	    });
 
-    @Override
-    public void displayStep(int stepIndex) {
-        super.displayStep(stepIndex);
-
-        double[] stepState = steps.get(stepIndex);
-
-        for (int i = 0; i < elements.length; i++) {
-            elements[i].updateValue(stepState[i]);
-
-            if (stepIndex > 0 && stepState[i] != steps.get(stepIndex - 1)[i]) {
-                elements[i].setColor(Color.YELLOW); 
-            } else {
-                elements[i].setColor(Color.LIGHTGRAY); 
-            }
-        }
-
-        if (stepIndex == steps.size() - 1) {
-            for (SortElement element : elements) {
-                element.setColor(Color.LIGHTGREEN); 
-            }
-        }
-    }
+	    // Thêm KeyFrame vào Timeline và bắt đầu thực thi
+	    timeline.getKeyFrames().add(keyFrame);
+	    timeline.play();
+	}
 }

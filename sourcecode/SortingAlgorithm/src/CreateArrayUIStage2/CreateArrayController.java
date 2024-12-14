@@ -52,7 +52,7 @@ public abstract class CreateArrayController {
             case "Bubble sort":
             	return new BubbleSort(array);
             case "Quick sort":
-            	return new QuickSort(array);
+                return new QuickSort(array);
             default:
                 throw new IllegalArgumentException("Unknown algorithm: " + selectedAlgorithm);
         }
@@ -60,14 +60,21 @@ public abstract class CreateArrayController {
 	
 	public void open() {
 		try {
+            // Download the view
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/VisualizationUI/VisualizationView.fxml"));
-            SortingAlgorithm sortingAlgorithm = this.createAlgorithm(this.selectedAlgorithm, this.myArray);
             
-       
+            // 
+            SortingAlgorithm sortingAlgorithm = this.createAlgorithm(this.selectedAlgorithm, this.myArray);
             loader.setControllerFactory(param -> sortingAlgorithm);
             Parent root = loader.load();
+            
+            // Build a new scene
             Scene newScene = new Scene(root);
+            
+            // Get the current stage
             Stage stage = (Stage) finishButton.getScene().getWindow(); 
+            
+            // Move to the new scene
             stage.setScene(newScene);
             
         } catch(IOException e) {
