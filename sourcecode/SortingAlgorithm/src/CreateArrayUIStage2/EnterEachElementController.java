@@ -34,7 +34,7 @@ public class EnterEachElementController extends CreateArrayController implements
 	}
 	
 	public void updatePivotPosition() {
-		ObservableList<String> pivotOption = FXCollections.observableArrayList("Right most", "Left most", "Middle");
+		ObservableList<String> pivotOption = FXCollections.observableArrayList("Right most");
 		pivotPosition.setItems(pivotOption);
 	}
 

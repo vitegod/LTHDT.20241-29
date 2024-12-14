@@ -34,4 +34,8 @@ public class SortElement {
 	 public void setValueText(Double value) {
 		 this.valueText.setText(String.valueOf(value));
 	 }
+
+	 public void setColor(Color color) {
+	     rectangle.setFill(color);
+	 }
 }

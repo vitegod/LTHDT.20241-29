@@ -46,9 +46,7 @@ public class CreateAutomaticallyController extends CreateArrayController {
 		
 		// Randomly generate pivot position for quick sort
 		if(selectedAlgorithm.equals("Quick sort")) {
-			String[] pivotOptions = {"Right most", "Left most", "Middle"};
-			int index = r.nextInt(pivotOptions.length);
-			pivotPosition = pivotOptions[index];
+			pivotPosition = "Right most";
 		}
 	}
 	

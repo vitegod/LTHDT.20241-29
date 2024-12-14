@@ -26,6 +26,10 @@ public class InsertionSort extends SortingAlgorithm{
 	        if (j[0] < 0 || elements[j[0]].getValue() <= key[0]) {
 	            // Chèn phần tử vào vị trí thích hợp
 	            elements[j[0] + 1].setValueText(key[0]);
+	            String[] info1 = {"Key element: " + " array[" + i[0] + "] = " + key[0] + "."};
+                this.instructionList.getItems().addAll(info1);
+	            String[] info = {"Insert key element into position: index = " + (j[0] + 1) + "."};
+	            this.instructionList.getItems().addAll(info);
 
 	            // Đặt lại màu sắc sau mỗi vòng lặp ngoài
 	            for (SortElement element : elements) {
@@ -44,6 +48,7 @@ public class InsertionSort extends SortingAlgorithm{
 	                key[0] = elements[i[0]].getValue();
 	                j[0] = i[0] - 1;
 	                elements[i[0]].getRectangle().setFill(Color.YELLOW); // Đánh dấu phần tử đang xử lý
+	                
 	            }
 	        } else {
 	            // Di chuyển phần tử lớn hơn sang phải

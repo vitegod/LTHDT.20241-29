@@ -13,7 +13,7 @@ public class BubbleSort extends SortingAlgorithm {
 	
 	@Override
 	public void perform() {
-	    Timeline timeline = new Timeline();
+		Timeline timeline = new Timeline();
 	    timeline.setCycleCount(Timeline.INDEFINITE); // Lặp cho đến khi hoàn thành
 
 	    // Biến trạng thái
@@ -21,7 +21,7 @@ public class BubbleSort extends SortingAlgorithm {
 	    int[] j = {0}; // Vòng lặp trong
 	    boolean[] comparing = {false}; // Trạng thái có đang so sánh hay không
 
-	    KeyFrame keyFrame = new KeyFrame(Duration.millis(1000), event -> {
+	    KeyFrame keyFrame = new KeyFrame(Duration.millis(1500), event -> {
 	        if (i[0] < myArray.getNbElements() - 1) {
 	            if (!comparing[0]) {
 	                // Đánh dấu hai phần tử được so sánh
@@ -34,6 +34,9 @@ public class BubbleSort extends SortingAlgorithm {
 	                    double temp = elements[j[0]].getValue();
 	                    elements[j[0]].setValueText(elements[j[0] + 1].getValue());
 	                    elements[j[0] + 1].setValueText(temp);
+	                    
+	                    String[] info = {"Cause array[" + j[0] + "] > array[" + (j[0] + 1) + "], swap them."};
+	                    this.instructionList.getItems().addAll(info);
 	                }
 
 	                // Khôi phục màu sắc sau khi so sánh
