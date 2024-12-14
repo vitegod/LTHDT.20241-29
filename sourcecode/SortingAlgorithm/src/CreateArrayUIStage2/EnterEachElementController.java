@@ -50,6 +50,7 @@ public class EnterEachElementController extends CreateArrayController implements
 		pivotPosition.setPromptText("Click here");
 	}
 	
+	
 	@Override
 	public void setupMyArray() {
 		String input = array.getText().trim();
@@ -82,6 +83,7 @@ public class EnterEachElementController extends CreateArrayController implements
 	        myArray.setArray(list);
 	        
 	        open();
+	    
 	    } 
 	    else {
 	        // Show error if the number of elements doesn't match

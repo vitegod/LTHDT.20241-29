@@ -1,62 +1,66 @@
 package VisualizationUI;
 
 import CreateArrayUIStage2.*;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.paint.Color;
-import javafx.util.Duration;
+import java.util.Arrays;
 
-public class InsertionSort extends SortingAlgorithm{
-	public InsertionSort(ArrayModel array) {
-		super(array);
-	}
-	
-	@Override
-	public void perform() {
-		Timeline timeline = new Timeline();
-	    timeline.setCycleCount(Timeline.INDEFINITE); // Lặp cho đến khi hoàn thành
+public class InsertionSort extends SortingAlgorithm {
 
-	    // Biến giữ trạng thái của thuật toán
-	    int[] i = {1}; // Vị trí hiện tại trong vòng lặp ngoài
-	    int[] j = {0}; // Vị trí hiện tại trong vòng lặp while
-	    double[] key = {0}; // Giá trị của phần tử cần chèn
+    public InsertionSort(ArrayModel array) {
+        super(array);
+    }
 
-	    // Thêm các bước vào Timeline
-	    timeline.getKeyFrames().add(new KeyFrame(Duration.millis(1500), event -> {
-	        if (j[0] < 0 || elements[j[0]].getValue() <= key[0]) {
-	            // Chèn phần tử vào vị trí thích hợp
-	            elements[j[0] + 1].setValueText(key[0]);
+    @Override
+    public void perform() {
+        if (elements.length == 0) return; 
 
-	            // Đặt lại màu sắc sau mỗi vòng lặp ngoài
-	            for (SortElement element : elements) {
-	                element.getRectangle().setFill(Color.LIGHTGRAY);
-	            }
+        double[] array = Arrays.stream(elements).mapToDouble(SortElement::getValue).toArray();
 
-	            // Tiến tới bước tiếp theo của vòng lặp ngoài
-	            i[0]++;
-	            if (i[0] >= myArray.getNbElements()) {
-	                timeline.stop(); // Dừng khi hoàn thành
-	                // Sau khi hoàn thành, chuyển tất cả sang màu xanh
-	                for(SortElement element : elements) {
-	                	 element.getRectangle().setFill(Color.LIGHTGREEN);
-	                }
-	            } else {
-	                key[0] = elements[i[0]].getValue();
-	                j[0] = i[0] - 1;
-	                elements[i[0]].getRectangle().setFill(Color.YELLOW); // Đánh dấu phần tử đang xử lý
-	            }
-	        } else {
-	            // Di chuyển phần tử lớn hơn sang phải
-	            elements[j[0] + 1].setValueText(elements[j[0]].getValue());
-	            elements[j[0]].getRectangle().setFill(Color.YELLOW);
-	            j[0]--;
-	        }
-	    }));
+        for (int i = 1; i < array.length; i++) {
+            double key = array[i];
+            int j = i - 1;
 
-	    // Bắt đầu thực thi Timeline
-	    key[0] = elements[i[0]].getValue();
-	    j[0] = i[0] - 1;
-	    elements[i[0]].getRectangle().setFill(Color.YELLOW); // Đánh dấu phần tử đầu tiên
-	    timeline.play();
-	}
+            addStep(Arrays.copyOf(array, array.length)); 
+
+            while (j >= 0 && array[j] > key) {
+                array[j + 1] = array[j];
+                j--;
+
+                addStep(Arrays.copyOf(array, array.length)); 
+            }
+
+            array[j + 1] = key;
+            addStep(Arrays.copyOf(array, array.length)); 
+        }
+
+        addStep(Arrays.copyOf(array, array.length)); 
+        System.out.println("Steps recorded: " + steps.size()); // Kiểm tra số bước đã ghi
+        for (double[] step : steps) {
+            System.out.println(Arrays.toString(step)); // In ra từng bước
+        }
+    }
+
+
+    @Override
+    public void displayStep(int stepIndex) {
+        super.displayStep(stepIndex);
+
+        double[] stepState = steps.get(stepIndex);
+        System.out.println("Displaying step " + stepIndex + ": " + Arrays.toString(stepState));
+        for (int i = 0; i < elements.length; i++) {
+            elements[i].updateValue(stepState[i]);
+
+            if (stepIndex > 0 && stepState[i] != steps.get(stepIndex - 1)[i]) {
+                elements[i].setColor(Color.YELLOW);
+            } else {
+                elements[i].setColor(Color.LIGHTGRAY);
+            }
+        }
+
+        if (stepIndex == steps.size() - 1) {
+            for (SortElement element : elements) {
+                element.setColor(Color.LIGHTGREEN); 
+            }
+        }
+    }
 }
