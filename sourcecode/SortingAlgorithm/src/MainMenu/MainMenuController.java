@@ -108,8 +108,7 @@ public class MainMenuController implements Initializable {
     
     @Override 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> list = FXCollections.observableArrayList(
-            "Quick sort", "Insertion sort", "Bubble sort");
-        chooseBox.setItems(list);
+    	ObservableList<String> list = FXCollections.observableArrayList("Quick sort", "Insertion sort", "Bubble sort");
+    	chooseBox.setItems(list);
     }
 }
