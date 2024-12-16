@@ -56,6 +56,7 @@ public abstract class SortingAlgorithm implements Initializable {
         hBox.setAlignment(Pos.CENTER);
         hBox.setPadding(new Insets(20));
         elements = new SortElement[myArray.getNbElements()];
+
         int i = 0;
         for (double value : myArray.getArray()) {
             elements[i] = new SortElement(value, 40);
@@ -67,9 +68,6 @@ public abstract class SortingAlgorithm implements Initializable {
             hBox.getChildren().add(stackPane);
             i++;
         }
-        Stage stage = (Stage) hBox.getScene().getWindow(); 
-        stage.setWidth(1080);
-        stage.setHeight(720);
         perform();
 
         updateStepLabel();
