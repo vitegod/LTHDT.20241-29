@@ -21,8 +21,9 @@
 
 
 ## GitHub Repository
-
-* https://github.com/vitegod/LTHDT.20241-29
+```
+https://github.com/vitegod/LTHDT.20241-29
+```
 
 ## Mô tả
 
@@ -36,4 +37,9 @@ Repository này chứa các bài tập, dự án và tài liệu liên quan đ�
 4. Hoàn thành bài tập hoặc dự án và commit các thay đổi của bạn.
 5. Push các thay đổi lên GitHub để chia sẻ với các thành viên khác trong nhóm.
 
-## Chúc các bạn học tốt và đạt điểm cao trong môn học này!
+## Demo video
+[Insertion sort](https://drive.google.com/file/d/1GURer1FJ4RB_YXdtB0P40WslIZXpeHyK/view?usp=sharing)
+
+[Bubble sort](https://drive.google.com/file/d/1Ap-FaSoncKUrFlOp6NpL_lSweJgDzhxf/view?usp=sharing)
+
+[Quick sort](https://drive.google.com/file/d/1v5PG0I6LMxGeIR8x-wgFEMj1f9Lbi7v9/view?usp=sharing)
