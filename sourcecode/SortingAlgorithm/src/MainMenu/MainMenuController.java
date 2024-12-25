@@ -3,12 +3,15 @@ package MainMenu;
 import javafx.fxml.*;
 import CreateArrayUIStage1.*;
 import javafx.scene.control.*;
+import javafx.application.Platform;
 import javafx.collections.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.*;
 import javafx.stage.Stage;
+import javafx.fxml.FXML;
+import javafx.scene.control.SplitPane;
 
 public class MainMenuController implements Initializable {
     @FXML
@@ -22,6 +25,18 @@ public class MainMenuController implements Initializable {
     
     @FXML
     private Label showMessage;
+    
+    @FXML
+    private SplitPane mainSplitPane;
+
+    @FXML
+    private SplitPane innerSplitPane;
+
+    @FXML
+    private Double firstDividerPosition;
+
+    @FXML
+    private Double secondDividerPosition;
     
     private String selectedAlgorithm;
     
@@ -74,6 +89,7 @@ public class MainMenuController implements Initializable {
     
     @FXML
     public void handleStartButton() {
+    	lockSplitPaneDividers();
     	this.selectedAlgorithm = chooseBox.getValue();
         if(selectedAlgorithm == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -104,10 +120,20 @@ public class MainMenuController implements Initializable {
         }
     }
 
+    private void lockSplitPaneDividers() {
+        mainSplitPane.setDividerPositions(secondDividerPosition.doubleValue());
+        innerSplitPane.setDividerPositions(firstDividerPosition.doubleValue());
+
+//        mainSplitPane.setDisable(true);
+//        innerSplitPane.setDisable(true);
+    }
     
     @Override 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    	ObservableList<String> list = FXCollections.observableArrayList("Quick sort", "Insertion sort", "Bubble sort");
-    	chooseBox.setItems(list);
+    	secondDividerPosition = 0.3644578313253012;
+        firstDividerPosition = 0.3555630026809651;
+
+        ObservableList<String> list = FXCollections.observableArrayList("Bubble sort", "Insertion sort", "Quick sort");
+        chooseBox.setItems(list);
     }
 }
