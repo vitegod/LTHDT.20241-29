@@ -38,30 +38,40 @@ public abstract class SortingAlgorithm implements Initializable {
 	}
 
 	@Override
-	public void initialize(URL url, ResourceBundle resourceBundle) {
-		// Initialize for HBOX
-		hBox.setSpacing(10);
-		hBox.setAlignment(Pos.CENTER);
-		hBox.setPadding(new Insets(20));
-		elements = new SortElement[myArray.getNbElements()];
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        double[] sortedArray = Arrays.stream(myArray.getArray()).sorted().toArray();
 
-		int i = 0;
-		for (double value : myArray.getArray()) {
-			elements[i] = new SortElement(value, 40);
+        hBox.setSpacing(10);
+        hBox.setAlignment(Pos.BOTTOM_CENTER);
+        hBox.setPadding(new Insets(20, 20, 50, 20));
 
-			StackPane stackPane = new StackPane();
-			stackPane.getChildren().addAll(elements[i].getRectangle(), elements[i].getValueText());
-			stackPane.setAlignment(Pos.CENTER);
+        Scene scene = hBox.getScene();
+        if (scene != null) {
+            Stage stage = (Stage) scene.getWindow();
+            if (stage != null) {
+                stage.setHeight(600);
+            }
+        }
 
-			hBox.getChildren().add(stackPane);
-			i++;
-		}
-		
-		// Initialize for instruction
-		String[] instruction = {"1. For quick sort algorithm, click 'Start' to visualize each step of the process.",
-				                "2. For other algorithms, click 'Start' ONE TIME only. The process will run automatically."};
+        elements = new SortElement[myArray.getNbElements()];
+
+        int i = 0;
+        for (double value : myArray.getArray()) {
+            elements[i] = new SortElement(value, sortedArray);
+
+            StackPane stackPane = new StackPane();
+            stackPane.getChildren().addAll(elements[i].getRectangle(), elements[i].getValueText());
+            stackPane.setAlignment(Pos.BOTTOM_CENTER);
+
+            hBox.getChildren().add(stackPane);
+            i++;
+        }
+
+        // Initialize for instruction
+        String[] instruction = {"1. For quick sort algorithm, click 'Start' to visualize each step of the process.",
+                "2. For other algorithms, click 'Start' ONE TIME only. The process will run automatically."};
         instructionList.getItems().addAll(instruction);
-	}
+    }
 
 	public abstract void perform();
 
