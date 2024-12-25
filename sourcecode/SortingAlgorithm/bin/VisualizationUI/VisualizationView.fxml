@@ -15,7 +15,7 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="389.0" layoutY="602.0" mnemonicParsing="false" onAction="#perform" prefHeight="73.0" prefWidth="304.0" text="▶ START VISUALIZATION ◀">
+      <Button fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="415.0" layoutY="656.0" mnemonicParsing="false" onAction="#perform" prefHeight="34.0" prefWidth="250.0" text="AUTO PLAY">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -25,6 +25,19 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
+      <Button fx:id="pausePlayButton" layoutX="492.0" layoutY="590.0" onAction="#handlePausePlay" prefHeight="49.0" prefWidth="97.0" style="-fx-font-weight: bold;" text="PAUSE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="nextButton" disable="true" layoutX="609.0" layoutY="590.0" onAction="#handleNextStep" prefHeight="49.0" prefWidth="97.0" style="-fx-font-weight: bold;" text="Next" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+	  <Button fx:id="prevButton" disable="true" layoutX="372.0" layoutY="590.0" onAction="#handlePrevStep" prefHeight="49.0" prefWidth="97.0" style="-fx-font-weight: bold;" text="Previous">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
       <Label fx:id="quickSortInstruction" alignment="CENTER" contentDisplay="CENTER" layoutX="45.0" layoutY="361.0" prefHeight="220.0" prefWidth="327.0">
          <font>
             <Font name="System Bold" size="13.0" />

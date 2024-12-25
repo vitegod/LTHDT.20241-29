@@ -13,8 +13,8 @@ public class BubbleSort extends SortingAlgorithm {
 	
 	@Override
 	public void perform() {
-		Timeline timeline = new Timeline();
-	    timeline.setCycleCount(Timeline.INDEFINITE); // Lặp cho đến khi hoàn thành
+		timeline = new Timeline();
+		timeline.setCycleCount(Timeline.INDEFINITE);
 
 	    // Biến trạng thái
 	    int[] i = {0}; // Vòng lặp ngoài
@@ -22,47 +22,133 @@ public class BubbleSort extends SortingAlgorithm {
 	    boolean[] comparing = {false}; // Trạng thái có đang so sánh hay không
 
 	    KeyFrame keyFrame = new KeyFrame(Duration.millis(300), event -> {
-	        if (i[0] < myArray.getNbElements() - 1) {
-	            if (!comparing[0]) {
-	                // Đánh dấu hai phần tử được so sánh
-	                elements[j[0]].getRectangle().setFill(Color.YELLOW);
-	                elements[j[0] + 1].getRectangle().setFill(Color.YELLOW);
-	                comparing[0] = true; // Đặt trạng thái đang so sánh
-	            } else {
-	                // Thực hiện so sánh và hoán đổi nếu cần
-	                if (elements[j[0]].getValue() > elements[j[0] + 1].getValue()) {
-	                	swap(j[0], j[0] + 1);
-	                    
-	                    String[] info = {"Cause array[" + j[0] + "] > array[" + (j[0] + 1) + "], swap them."};
-	                    this.instructionList.getItems().addAll(info);
-	                }
+//	        if (i[0] < myArray.getNbElements() - 1) {
+//	            if (!comparing[0]) {
+//	                // Đánh dấu hai phần tử được so sánh
+//	                elements[j[0]].getRectangle().setFill(Color.YELLOW);
+//	                elements[j[0] + 1].getRectangle().setFill(Color.YELLOW);
+//	                comparing[0] = true; // Đặt trạng thái đang so sánh
+//	            } else {
+//	                // Thực hiện so sánh và hoán đổi nếu cần
+//	                if (elements[j[0]].getValue() > elements[j[0] + 1].getValue()) {
+//	                	swap(j[0], j[0] + 1);
+//	                    
+//	                    String[] info = {"Cause array[" + j[0] + "] > array[" + (j[0] + 1) + "], swap them."};
+//	                    this.instructionList.getItems().addAll(info);
+//	                }
+//
+//	                // Khôi phục màu sắc sau khi so sánh
+//	                elements[j[0]].getRectangle().setFill(Color.LIGHTGRAY);
+//	                elements[j[0] + 1].getRectangle().setFill(Color.LIGHTGRAY);
+//	                comparing[0] = false; // Đặt trạng thái kết thúc so sánh
+//
+//	                // Chuyển sang cặp phần tử tiếp theo
+//	                j[0]++;
+//	                if (j[0] >= myArray.getNbElements() - 1 - i[0]) {
+//	                    // Khi hoàn thành một vòng lặp trong
+//	                    elements[myArray.getNbElements() - 1 - i[0]].getRectangle().setFill(Color.LIGHTGREEN);
+//	                    j[0] = 0;
+//	                    i[0]++;
+//	                }
+//	            }
+//	        } else {
+//	            // Toàn bộ mảng đã được sắp xếp
+//	            for (SortElement element : elements) {
+//	                element.getRectangle().setFill(Color.LIGHTGREEN);
+//	            }
+//	            timeline.stop();
+//	        }
+	    	if (i[0] < myArray.getNbElements() - 1) {
+	    	    if (!comparing[0]) {
+	    	        elements[j[0]].getRectangle().setFill(Color.YELLOW);
+	    	        elements[j[0] + 1].getRectangle().setFill(Color.YELLOW);
+	    	        comparing[0] = true;
+	    	    } else {
+	    	        if (elements[j[0]].getValue() > elements[j[0] + 1].getValue()) {
+	    	            swap(j[0], j[0] + 1);
 
-	                // Khôi phục màu sắc sau khi so sánh
-	                elements[j[0]].getRectangle().setFill(Color.LIGHTGRAY);
-	                elements[j[0] + 1].getRectangle().setFill(Color.LIGHTGRAY);
-	                comparing[0] = false; // Đặt trạng thái kết thúc so sánh
+	    	            String[] info = {"Cause array[" + j[0] + "] > array[" + (j[0] + 1) + "], swap them."};
+	    	            this.instructionList.getItems().addAll(info);
+	    	        }
 
-	                // Chuyển sang cặp phần tử tiếp theo
-	                j[0]++;
-	                if (j[0] >= myArray.getNbElements() - 1 - i[0]) {
-	                    // Khi hoàn thành một vòng lặp trong
-	                    elements[myArray.getNbElements() - 1 - i[0]].getRectangle().setFill(Color.LIGHTGREEN);
-	                    j[0] = 0;
-	                    i[0]++;
-	                }
-	            }
-	        } else {
-	            // Toàn bộ mảng đã được sắp xếp
-	            for (SortElement element : elements) {
-	                element.getRectangle().setFill(Color.LIGHTGREEN);
-	            }
-	            timeline.stop();
-	        }
+	    	        elements[j[0]].getRectangle().setFill(Color.LIGHTGRAY);
+	    	        elements[j[0] + 1].getRectangle().setFill(Color.LIGHTGRAY);
+	    	        comparing[0] = false;
+
+	    	        j[0]++;
+	    	        if (j[0] >= myArray.getNbElements() - 1 - i[0]) {
+	    	            elements[myArray.getNbElements() - 1 - i[0]].getRectangle().setFill(Color.LIGHTGREEN);
+	    	            j[0] = 0;
+	    	            i[0]++;
+	    	        }
+	    	    }
+
+	    	    int currentIndex = j[0];
+	    	    int currentI = i[0];
+	    	    boolean currentComparing = comparing[0];
+
+	    	    Runnable action = () -> {
+	    	    	if (currentComparing) {
+	    	            elements[currentIndex].getRectangle().setFill(Color.YELLOW);
+	    	            elements[currentIndex + 1].getRectangle().setFill(Color.YELLOW);
+	    	        } else {
+	    	            elements[currentIndex].getRectangle().setFill(Color.LIGHTGRAY);
+	    	            elements[currentIndex + 1].getRectangle().setFill(Color.LIGHTGRAY);
+
+	    	            if (currentIndex > 0) {
+	    	                elements[currentIndex - 1].getRectangle().setFill(Color.LIGHTGRAY);
+	    	            }
+
+	    	            if (currentIndex >= myArray.getNbElements() - 1 - currentI) {
+	    	                elements[myArray.getNbElements() - 1 - currentI].getRectangle().setFill(Color.LIGHTGREEN);
+	    	            }
+	    	        }
+
+	    	    	if(isManualStepping) {
+	    	    		if (!redoStack.isEmpty()) {
+	    	            	nextButton.setDisable(false);
+	    	            }
+	    	    		else {
+	    	    			nextButton.setDisable(true);
+	    	    		}
+	    	    	}
+	    	    };
+
+	    	    if(isManualStepping) {
+	    	    	undoStack.push(action);
+
+	    	    	if(undoStack.isEmpty()) {
+	    	        	prevButton.setDisable(true);
+	    	        }
+	    	        else {
+	    	        	prevButton.setDisable(false);
+	    	        }
+	    	    }
+
+
+	    	    if (!isPaused && !isManualStepping) {
+	    	        action.run();
+	    	    }
+	    	} else {
+	    	    for (SortElement element : elements) {
+	    	        element.getRectangle().setFill(Color.LIGHTGREEN);
+	    	    }
+	    	    timeline.stop();
+	    	    startButton.setDisable(false);
+	    	    pausePlayButton.setDisable(true);
+	    	    nextButton.setDisable(true);
+	    	    prevButton.setDisable(true);
+	    	}
 	    });
 
 	    // Thêm KeyFrame vào Timeline và bắt đầu thực thi
 	    timeline.getKeyFrames().add(keyFrame);
-	    timeline.play();
+//	    timeline.play();
+	    startButton.setOnAction(event -> {
+	        if (timeline != null) {
+	            timeline.play();
+	        }
+	    });
 	}
 	
 	private void swap(int index1, int index2) {

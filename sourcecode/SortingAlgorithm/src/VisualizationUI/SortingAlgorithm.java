@@ -7,6 +7,9 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.geometry.*;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.EventHandler;
 import javafx.fxml.*;
 import java.io.IOException;
 import javafx.stage.Stage;
@@ -15,6 +18,20 @@ public abstract class SortingAlgorithm implements Initializable {
 	protected String selectedAlgorithm;
 	protected ArrayModel myArray;
 	protected SortElement[] elements;
+	protected Timeline timeline;
+	protected boolean isPaused = false;
+	protected Stack<Runnable> undoStack = new Stack<>();
+	protected Stack<Runnable> redoStack = new Stack<>();
+	protected boolean isManualStepping = false;
+	
+	@FXML
+	protected Button pausePlayButton;
+	
+	@FXML
+	protected Button nextButton;
+
+	@FXML
+	protected Button prevButton;
 	
 	@FXML
 	protected ListView<String> instructionList;
@@ -35,6 +52,92 @@ public abstract class SortingAlgorithm implements Initializable {
 
 	public SortingAlgorithm(ArrayModel array) {
 		this.myArray = array;
+	}
+	
+	@FXML
+	protected void handlePausePlay() {
+	    if (isPaused) {
+	        timeline.play();
+	        pausePlayButton.setText("Pause");
+	        isPaused = false;
+	        nextButton.setDisable(true);
+	        prevButton.setDisable(true);
+	        isManualStepping = false;
+	    } else {
+	        timeline.pause();
+	        pausePlayButton.setText("Play");
+	        isPaused = true;
+	        nextButton.setDisable(false);
+	        isManualStepping = true;
+
+	        if(undoStack.isEmpty()) {
+	        	prevButton.setDisable(true);
+	        }
+	        else {
+	        	prevButton.setDisable(false);
+	        }
+	    }
+	}
+	
+	@FXML
+	protected void handleNextStep() {
+	    isManualStepping = true;
+	    if (!redoStack.isEmpty()) {
+	        Runnable redoAction = redoStack.pop();
+	        redoAction.run();
+
+	        undoStack.push(redoAction);
+
+	        if (undoStack.isEmpty()) {
+	            prevButton.setDisable(true);
+	        } else {
+	            prevButton.setDisable(false);
+	        }
+
+	        if (redoStack.isEmpty()) {
+	            nextButton.setDisable(true);
+	        } else {
+	            nextButton.setDisable(false);
+	        }
+	    } else {
+	        nextButton.setDisable(true);
+	    }
+	}
+	
+	@FXML
+	protected void handlePrevStep() {
+	    isManualStepping = true;
+	    if (!undoStack.isEmpty()) {
+	        Runnable undoAction = undoStack.pop();
+	        KeyFrame keyFrameToRemove = null;
+	        for (KeyFrame kf : timeline.getKeyFrames()) {
+	            Object eventHandler = kf.getOnFinished();
+	            if (eventHandler instanceof EventHandler && ((EventHandler<?>) eventHandler).equals(undoAction)) {
+	                keyFrameToRemove = kf;
+	                break;
+	            }
+	        }
+
+	        if (keyFrameToRemove != null) {
+	            timeline.getKeyFrames().remove(keyFrameToRemove);
+	        }
+
+	        redoStack.push(undoAction);
+
+	        if (redoStack.isEmpty()) {
+	            nextButton.setDisable(true);
+	        } else {
+	            nextButton.setDisable(false);
+	        }
+
+	        if (undoStack.isEmpty()) {
+	            prevButton.setDisable(true);
+	        } else {
+	            prevButton.setDisable(false);
+	        }
+	    } else {
+	        prevButton.setDisable(true);
+	    }
 	}
 
 	@Override
@@ -71,6 +174,23 @@ public abstract class SortingAlgorithm implements Initializable {
         String[] instruction = {"1. For quick sort algorithm, click 'Start' to visualize each step of the process.",
                 "2. For other algorithms, click 'Start' ONE TIME only. The process will run automatically."};
         instructionList.getItems().addAll(instruction);
+//        perform();
+
+        startButton.setOnAction(event -> {
+            startButton.setDisable(true);
+            pausePlayButton.setDisable(false);
+            nextButton.setDisable(true);
+            prevButton.setDisable(true);
+
+            perform();
+            isManualStepping = false;
+        });
+
+	    pausePlayButton.setOnAction(event -> handlePausePlay());
+
+	    pausePlayButton.setDisable(true);
+	    nextButton.setDisable(true);
+	    prevButton.setDisable(true);
     }
 
 	public abstract void perform();
