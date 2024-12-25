@@ -13,7 +13,6 @@ public class QuickSort extends SortingAlgorithm {
     private int j = low;
     private boolean isPartitionComplete = false;
 
-    // Stack hoặc danh sách theo dõi các phạm vi cần sắp xếp đệ quy
     private Stack<int[]> rangesToSort = new Stack<>();
 
     public QuickSort(ArrayModel array) {
@@ -23,7 +22,6 @@ public class QuickSort extends SortingAlgorithm {
     @Override
     public void perform() {
         if (isPartitionComplete) {
-            // Nếu partition đã hoàn thành, tiến hành đệ quy cho các phạm vi con
             if (!rangesToSort.isEmpty()) {
                 int[] range = rangesToSort.pop();
                 low = range[0];
@@ -32,8 +30,8 @@ public class QuickSort extends SortingAlgorithm {
                 j = low;
 
                 step = 0;
-                isPartitionComplete = false; // Đặt lại trạng thái partition
-                perform(); // Tiến hành partition cho phạm vi con
+                isPartitionComplete = false;
+                perform();
                 return;
             } else {
                 System.out.println("Quá trình QuickSort hoàn tất!");
@@ -44,16 +42,15 @@ public class QuickSort extends SortingAlgorithm {
             }
         }
 
-        // Lấy pivot (sử dụng phần tử cuối cùng trong mảng)
         int pivotPosition = high;
         double pivot = elements[pivotPosition].getValue();
-        elements[pivotPosition].setColor(Color.ORANGE);  // Đánh dấu pivot
+        double pivotHeight = elements[pivotPosition].getHeight();
+        elements[pivotPosition].setColor(Color.ORANGE);
         
         switch (step) {
             case 0:
-                // **Bước 1**: Bôi vàng phần tử tại vị trí j
                 if (j < high) {
-                    elements[j].setColor(Color.YELLOW); // Đánh dấu phần tử đang được so sánh
+                    elements[j].setColor(Color.YELLOW);
                     step = 1; // Chuyển sang bước tiếp theo
                 } else {
                     step = 3; // Nếu j >= high, chuẩn bị hoán đổi pivot
@@ -72,9 +69,8 @@ public class QuickSort extends SortingAlgorithm {
                     if (i >= 0) { // Kiểm tra chỉ số i hợp lệ
                     	String[] info1 = {"Cause array[j] <= array[pivot], increase i, now i = " + i + " and j = " + j + ". Swap array[" + i + "] and array[" + j + "]."};
                     	this.instructionList.getItems().addAll(info1);
-                        double temp = elements[i].getValue();
-                        elements[i].setValueText(elements[j].getValue());
-                        elements[j].setValueText(temp);
+
+                    	swap(i, j);
 
                         // Đánh dấu màu
                         elements[i].setColor(Color.LIGHTBLUE);
@@ -100,9 +96,7 @@ public class QuickSort extends SortingAlgorithm {
 
             case 3:
                 // **Bước 4**: Hoán đổi pivot vào vị trí cuối cùng
-                double temp = elements[i + 1].getValue();
-                elements[i + 1].setValueText(pivot);
-                elements[pivotPosition].setValueText(temp);
+            	swap(i + 1, pivotPosition);
 
                 // Đánh dấu màu
                 elements[pivotPosition].setColor(Color.LIGHTGRAY);
@@ -121,6 +115,19 @@ public class QuickSort extends SortingAlgorithm {
                 }
                 break;
         }
+    }
+    
+    private void swap(int index1, int index2) {
+        double tempValue = elements[index1].getValue();
+        elements[index1].setValueText(elements[index2].getValue());
+        elements[index2].setValueText(tempValue);
+
+        double tempHeight = elements[index1].getHeight();
+        elements[index1].setHeight(elements[index2].getHeight());
+        elements[index2].setHeight(tempHeight);
+
+        elements[index1].getRectangle().setHeight(elements[index1].getHeight());
+        elements[index2].getRectangle().setHeight(elements[index2].getHeight());
     }
 
 }
