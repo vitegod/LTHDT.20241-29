@@ -22,7 +22,7 @@
 
 ## Mô tả
 
-Repository này chứa các bài tập, dự án và tài liệu liên quan đến môn học Lập Trình Hướng Đối Tượng - Kỳ 2024.
+Repository này chứa các bài tập, dự án và tài liệu liên quan đến môn học Lập Trình Hướng Đối Tượng - Kỳ 2024.1
 
 ## Hướng dẫn sử dụng
 
