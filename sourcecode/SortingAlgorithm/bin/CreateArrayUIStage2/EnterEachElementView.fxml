@@ -8,76 +8,65 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateArrayUIStage2.EnterEachElementController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateArrayUIStage2.EnterEachElementController">
    <children>
-      <SplitPane dividerPositions="0.4596100278551532" layoutX="140.0" layoutY="63.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.4422690763052209" layoutX="140.0" layoutY="63.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="176.0" prefWidth="598.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="194.0" layoutY="24.0" prefHeight="79.0" prefWidth="1078.0" style="-fx-background-color: lightgray;" text="Enter your custom array" textAlignment="CENTER" textFill="#560a0a" AnchorPane.bottomAnchor="248.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="194.0" layoutY="24.0" style="-fx-background-color: lightgray;" text="An example to enter each element" textAlignment="CENTER" textFill="#560a0a" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="System Bold" size="36.0" />
+                        <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="256.0" layoutY="158.0" text="Choose the number of elements">
+                  <Label layoutX="120.0" layoutY="42.0" text="Choose the number of elements">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="256.0" layoutY="210.0" text="Enter each element">
+                  <Label layoutX="120.0" layoutY="87.0" text="Enter each element">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font></Label>
-                  <Label layoutX="256.0" layoutY="264.0" text="Pivot position (for quick sort only)">
+                  <Label layoutX="121.0" layoutY="131.0" text="Pivot position (for quick sort only)">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font></Label>
-                  <ComboBox layoutX="573.0" layoutY="147.0" prefHeight="47.0" prefWidth="132.0" promptText="5" />
-                  <TextField editable="false" layoutX="573.0" layoutY="203.0" prefHeight="39.0" prefWidth="393.0" text="2 3 1 4 5">
-                     <font>
-                        <Font size="18.0" />
-                     </font></TextField>
-                  <Label layoutX="402.0" layoutY="91.0" text="This is an example input" textFill="#d79f04">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <ComboBox layoutX="573.0" layoutY="253.0" prefHeight="47.0" prefWidth="132.0" promptText="3" />
+                  <ComboBox layoutX="312.0" layoutY="38.0" prefWidth="150.0" promptText="5" />
+                  <TextField editable="false" layoutX="240.0" layoutY="83.0" prefHeight="26.0" prefWidth="221.0" text="2 3 1 4 5" />
+                  <ComboBox layoutX="327.0" layoutY="127.0" prefHeight="26.0" prefWidth="133.0" promptText="3" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <ComboBox fx:id="nbElements" layoutX="572.0" layoutY="76.0" prefHeight="47.0" prefWidth="132.0" />
-                  <TextField fx:id="array" layoutX="570.0" layoutY="148.0" prefHeight="39.0" prefWidth="393.0">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="285.0" layoutY="5.0" style="-fx-background-color: lightgray;" text="Create your array" textAlignment="CENTER" textFill="#560a0a" AnchorPane.bottomAnchor="192.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font size="18.0" />
-                     </font></TextField>
-                  <ComboBox fx:id="pivotPosition" layoutX="572.0" layoutY="214.0" prefHeight="47.0" prefWidth="132.0" />
-                  <Label layoutX="252.0" layoutY="86.0" text="Choose the number of elements">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font></Label>
-                  <Label layoutX="252.0" layoutY="154.0" text="Enter each element">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font></Label>
-                  <Label layoutX="252.0" layoutY="224.0" text="Pivot position (for quick sort only)">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font></Label>
-                  <Button fx:id="finishButton" layoutX="479.0" layoutY="300.0" mnemonicParsing="false" onAction="#setupMyArray" prefHeight="64.0" prefWidth="132.0" text="FINISH" AnchorPane.leftAnchor="479.0">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font></Button>
-                  <Button fx:id="returnButton" layoutX="51.0" layoutY="308.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="47.0" prefWidth="108.0" text="↩️ RETURN" AnchorPane.rightAnchor="919.0">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font></Button>
-                  <Label layoutX="484.0" layoutY="21.0" text="Your Input">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
+                  <ComboBox fx:id="nbElements" layoutX="310.0" layoutY="48.0" prefWidth="150.0" />
+                  <TextField fx:id="array" layoutX="249.0" layoutY="90.0" prefHeight="26.0" prefWidth="211.0" />
+                  <ComboBox fx:id="pivotPosition" layoutX="326.0" layoutY="131.0" prefHeight="26.0" prefWidth="134.0" />
+                  <Label layoutX="120.0" layoutY="52.0" text="Choose the number of elements">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label layoutX="120.0" layoutY="94.0" text="Enter each element">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label layoutX="120.0" layoutY="137.0" text="Pivot position (for quick sort only)">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Button fx:id="finishButton" layoutX="237.0" layoutY="181.0" mnemonicParsing="false" onAction="#setupMyArray" prefHeight="26.0" prefWidth="66.0" text="FINISH" AnchorPane.leftAnchor="230.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="returnButton" layoutX="325.0" layoutY="181.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="26.0" prefWidth="66.0" text="RETURN" AnchorPane.rightAnchor="224.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
                </children></AnchorPane>
         </items>
       </SplitPane>
