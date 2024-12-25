@@ -9,17 +9,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenu.MainMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenu.MainMenuController">
    <children>
-      <SplitPane dividerPositions="0.3644578313253012" orientation="VERTICAL" prefHeight="381.0" prefWidth="608.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane fx:id="mainSplitPane" dividerPositions="0.37185929648241206" orientation="VERTICAL" prefHeight="381.0" prefWidth="608.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="157.0" prefWidth="595.0">
                <children>
-                  <SplitPane dividerPositions="0.3555630026809651" prefHeight="138.0" prefWidth="598.0" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane fx:id="innerSplitPane" dividerPositions="0.3555630026809651" prefHeight="138.0" prefWidth="598.0" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <ImageView fitHeight="126.0" fitWidth="210.0" layoutY="-3.0" nodeOrientation="INHERIT" pickOnBounds="true" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <ImageView fitHeight="245.0" fitWidth="380.0" layoutY="-3.0" nodeOrientation="INHERIT" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <image>
                                     <Image url="@../../image/6123c034286044167618b263_7.png" />
                                  </image></ImageView>
@@ -27,9 +27,9 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <Label fx:id="mainTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="-244.0" layoutY="-20.0" prefHeight="154.0" prefWidth="382.0" style="-fx-background-color: #eaecec;" text="Sorting Visualizer" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" wrapText="true" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <Label fx:id="mainTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="-244.0" layoutY="-20.0" prefHeight="154.0" prefWidth="382.0" style="-fx-background-color: #eaecec; -fx-font-weight: bold;" text="Sorting Visualizer" textAlignment="CENTER" textFill="#7b0b0b" wrapText="true" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
-                                    <Font size="35.0" />
+                                    <Font size="48.0" />
                                  </font>
                               </Label>
                            </children>
@@ -40,28 +40,28 @@
             </AnchorPane>
           <AnchorPane prefHeight="237.0" prefWidth="598.0">
                <children>
-                  <Button fx:id="quitButton" alignment="CENTER" contentDisplay="CENTER" layoutX="359.0" layoutY="190.0" mnemonicParsing="false" onAction="#handleQuit" prefHeight="30.0" prefWidth="78.0" text="Quit " textAlignment="CENTER" AnchorPane.rightAnchor="161.0">
+                  <Button fx:id="quitButton" alignment="CENTER" contentDisplay="CENTER" layoutX="738.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleQuit" prefHeight="87.0" prefWidth="196.0" text="↩️ Quit " textAlignment="CENTER" AnchorPane.rightAnchor="144.0">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font></Button>
-                  <Button fx:id="helpButton" alignment="CENTER" contentDisplay="CENTER" layoutX="260.0" layoutY="190.0" mnemonicParsing="false" onAction="#handleHelpMenu" prefHeight="30.0" prefWidth="78.0" text="Help " textAlignment="CENTER" AnchorPane.leftAnchor="260.0">
+                  <Button fx:id="helpButton" alignment="CENTER" contentDisplay="CENTER" layoutX="738.0" layoutY="181.0" mnemonicParsing="false" onAction="#handleHelpMenu" prefHeight="87.0" prefWidth="196.0" text="Help" textAlignment="CENTER" AnchorPane.leftAnchor="738.0">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Button>
-                  <ComboBox fx:id="chooseBox" layoutX="200.0" layoutY="54.0" onAction="#showUserOption" prefHeight="226.4" prefWidth="598.4" visibleRowCount="3" AnchorPane.bottomAnchor="168.4" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="54.0" />
-                  <Label layoutX="211.0" layoutY="23.0" text="Choose one sorting algorithm" AnchorPane.leftAnchor="192.0" AnchorPane.rightAnchor="192.0">
+                  <ComboBox fx:id="chooseBox" layoutX="81.0" layoutY="184.0" onAction="#showUserOption" prefHeight="80.0" prefWidth="498.0" style="-fx-font-size: 28px;" visibleRowCount="3" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="499.0" AnchorPane.topAnchor="184.0" />
+                  <Label layoutX="76.0" layoutY="107.0" prefHeight="53.0" prefWidth="522.0" text="Choose one sorting algorithm" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="480.0">
                      <font>
-                        <Font name="System Bold" size="15.0" />
+                        <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="170.0" layoutY="190.0" mnemonicParsing="false" onAction="#handleStartButton" prefHeight="30.0" prefWidth="72.0" text="Start ">
+                  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="738.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleStartButton" prefHeight="87.0" prefWidth="196.0" text="Start">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font></Button>
-                  <Label id="showMessage" fx:id="showMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="221.0" layoutY="104.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+                  <Label id="showMessage" fx:id="showMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="297.0" prefHeight="45.0" prefWidth="498.0" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="499.0">
                      <font>
-                        <Font name="System Bold" size="15.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                </children>
