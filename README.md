@@ -8,13 +8,17 @@
 ## Thông tin nhóm
 
 * **Nhóm số:** 29
-* **Thành viên:**
+* **Chủ đề:** 4
+* **Phân công nhiệm vụ:**
 
-    * 20226097 Phạm Thường Vi
-    * 20225683 Đinh Đình Hải Việt
-    * 20225684 Hoàng Quốc Việt
-    * 20226098 Nguyễn Hoàng Việt
-    * 20225777 Vũ Hoàng Việt
+  | Thành viên         | MSSV         | Phần trăm đóng góp   | Nhiệm vụ cụ thể                                             |
+  |:------------------:|:------------:|:--------------------:|:-----------------------------------------------------------:|
+  | Phạm Thường Vi     | 20226097     | 15%                  | Báo cáo (50%) + slide (50%). Hoàn thiện class diagram tổng quát (thêm package). Hoàn thiện class diagram chi tiết (thêm package). |
+  | Nguyễn Hoàng Việt  | 20226098     | 25%                  | Leader. Quản lý các version trên github. Test version 1 và fix bug version 1. Chỉnh sửa giao diện version 1. Hoàn thiện final version. |
+  | Hoàng Quốc Việt    | 20225684     | 10%                  | Báo cáo (50%) + slide (50%). |
+  | Đinh Đình Hải Việt | 20225683     | 25%                  | Thiết kế use case diagram. Thiết kế class diagram chi tiết. Code version 1 (giao diện chính, giao diện nhập mảng, giao diện thực thi 3 thuật toán). |
+  | Vũ Hoàng Việt      | 20225777     | 25%                  | Thiết kế class diagram tổng quát. Code version 1 (chỉnh sửa, bổ sung các tính năng cho giao diện thực thi 3 thuật toán: xem từng bước, xem bước trước đó). Test version 1 và fix bug version 1. |
+
 
 ## GitHub Repository
 
@@ -22,7 +26,7 @@
 
 ## Mô tả
 
-Repository này chứa các bài tập, dự án và tài liệu liên quan đến môn học Lập Trình Hướng Đối Tượng - Kỳ 2024.
+Repository này chứa các bài tập, dự án và tài liệu liên quan đến môn học Lập Trình Hướng Đối Tượng - Kỳ 2024.1
 
 ## Hướng dẫn sử dụng
 
