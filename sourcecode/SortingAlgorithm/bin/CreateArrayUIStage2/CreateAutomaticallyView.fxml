@@ -7,42 +7,42 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateArrayUIStage2.CreateAutomaticallyController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1079.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateArrayUIStage2.CreateAutomaticallyController">
    <children>
-      <SplitPane dividerPositions="0.7058232931726908" layoutY="30.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.7261306532663316" layoutY="30.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="107.0" prefWidth="508.0" style="-fx-background-color: white;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="139.0" prefWidth="598.0" style="-fx-background-color: white;">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-background-color: lightgray;" text="Your array has been created " textAlignment="CENTER" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="67.0" prefWidth="1077.0" style="-fx-background-color: lightgray;" text="Create random array automatically" textAlignment="CENTER" textFill="#7b0b0b" AnchorPane.bottomAnchor="451.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
-                        <Font name="System Bold" size="13.0" />
+                        <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="resultList" layoutY="116.0" prefHeight="114.0" prefWidth="598.0" AnchorPane.bottomAnchor="49.60000000000002" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="116.0" />
-                  <Label layoutX="221.0" layoutY="244.0" text="Click 'FINISH' to continue">
+                  <ListView fx:id="resultList" layoutY="133.0" prefHeight="383.0" prefWidth="1077.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="133.0" />
+                  <Label layoutX="352.0" layoutY="82.0" text="Click 'Generate' to see your array">
                      <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font></Label>
-                  <Button fx:id="showResult" layoutX="258.0" layoutY="75.0" mnemonicParsing="false" onAction="#showResult" text="Show result">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Button>
-                  <Label layoutX="190.0" layoutY="43.0" text="Click 'Show result' to see your array">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1077.0">
                <children>
-                  <Button fx:id="finishButton" layoutX="224.0" layoutY="44.0" mnemonicParsing="false" onAction="#setupMyArray" prefHeight="26.0" prefWidth="67.0" text="FINISH">
+                  <Button fx:id="finishButton" layoutX="580.0" layoutY="88.0" mnemonicParsing="false" onAction="#setupMyArray" prefHeight="67.0" prefWidth="135.0" text="FINISH">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font></Button>
-                  <Button fx:id="returnButton" layoutX="311.0" layoutY="44.0" mnemonicParsing="false" onAction="#returnToMainMenu" text="RETURN">
+                  <Button fx:id="returnButton" layoutX="33.0" layoutY="121.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="47.0" prefWidth="118.0" text="↩️ RETURN">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="14.0" />
+                     </font></Button>
+                  <Label layoutX="394.0" layoutY="24.0" text="Click 'FINISH' to continue">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font></Label>
+                  <Button fx:id="showResult" layoutX="363.0" layoutY="88.0" mnemonicParsing="false" onAction="#showResult" prefHeight="67.0" prefWidth="135.0" text="GENERATE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
                      </font></Button>
                </children>
             </AnchorPane>
